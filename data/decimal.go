@@ -37,3 +37,12 @@ func DecimalPtrToFloat64(d *decimal.Decimal) *float64 {
 	f := d.InexactFloat64()
 	return &f
 }
+
+// StringToDecimalPtr *string -> *decimal.Decimal
+func StringToDecimalPtr(s *string) *decimal.Decimal {
+	if s == nil {
+		return nil
+	}
+	d := decimal.RequireFromString(*s)
+	return &d
+}
