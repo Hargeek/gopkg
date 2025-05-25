@@ -38,7 +38,7 @@ func UTC2CSTStr(t string) (timeStr string, err error) {
 
 // TimeStrToCompact 将时间字符串"2006-01-02 15:04:05"转换为"20060102150405"格式
 func TimeStrToCompact(t string) (string, error) {
-	loc, _ := time.LoadLocation("") // 获取本地时区
+	loc, _ := time.LoadLocation("Local") // 获取本地时区
 	parsed, err := time.ParseInLocation(ctLayout, t, loc)
 	if err != nil {
 		return "", err
@@ -48,7 +48,7 @@ func TimeStrToCompact(t string) (string, error) {
 
 // TimeStrToTimestamp 将时间字符串"2006-01-02 15:04:05"转换为秒级时间戳
 func TimeStrToTimestamp(t string) (int64, error) {
-	loc, _ := time.LoadLocation("") // 获取本地时区
+	loc, _ := time.LoadLocation("Local") // 获取本地时区
 	parsed, err := time.ParseInLocation(ctLayout, t, loc)
 	if err != nil {
 		return 0, err
@@ -58,7 +58,7 @@ func TimeStrToTimestamp(t string) (int64, error) {
 
 // TimeStrToMilliTimestamp 将时间字符串"2006-01-02 15:04:05"转换为毫秒级时间戳
 func TimeStrToMilliTimestamp(t string) (int64, error) {
-	loc, _ := time.LoadLocation("") // 获取本地时区
+	loc, _ := time.LoadLocation("Local") // 获取本地时区
 	parsed, err := time.ParseInLocation(ctLayout, t, loc)
 	if err != nil {
 		return 0, err
@@ -68,18 +68,18 @@ func TimeStrToMilliTimestamp(t string) (int64, error) {
 
 // TimeToCompact 将 time.Time 转换为 "20060102150405" 格式
 func TimeToCompact(t time.Time) string {
-	loc, _ := time.LoadLocation("") // 获取本地时区
+	loc, _ := time.LoadLocation("Local") // 获取本地时区
 	return t.In(loc).Format("20060102150405")
 }
 
 // TimeToTimestamp 将 time.Time 转换为秒级时间戳
 func TimeToTimestamp(t time.Time) int64 {
-	loc, _ := time.LoadLocation("") // 获取本地时区
+	loc, _ := time.LoadLocation("Local") // 获取本地时区
 	return t.In(loc).Unix()
 }
 
 // TimeToMilliTimestamp 将 time.Time 转换为毫秒级时间戳
 func TimeToMilliTimestamp(t time.Time) int64 {
-	loc, _ := time.LoadLocation("") // 获取本地时区
+	loc, _ := time.LoadLocation("Local") // 获取本地时区
 	return t.In(loc).UnixNano() / 1e6
 }
