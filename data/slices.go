@@ -37,6 +37,23 @@ func StrSlicesContainsOneElement(sliceOrigin []string, sliceCollection []string)
 	return false
 }
 
+// StrSlicesEqualWithLoop 两个字符串切片是否相等(使用循环)
+func StrSlicesEqualWithLoop(slice1, slice2 []string) bool {
+	if len(slice1) != len(slice2) {
+		return false
+	}
+	// compare the slices
+	if (slice1 == nil) != (slice2 == nil) {
+		return false
+	}
+	for i, a := range slice1 {
+		if a != slice2[i] {
+			return false
+		}
+	}
+	return true
+}
+
 // IntDisorderSlicesEqualWithLoop 两个整数切片是否相等(使用循环且不考虑顺序)
 func IntDisorderSlicesEqualWithLoop(slice1, slice2 []int) bool {
 	if len(slice1) != len(slice2) {
