@@ -3,8 +3,8 @@ package network
 import (
 	"errors"
 	"net/url"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 // GetBasePathFromURL 从URL获取最后一个路径
@@ -20,9 +20,9 @@ func GetBasePathFromURL(URL string) (string, error) {
 	return "", errors.New("invalid URL")
 }
 
-// NormalizePathForAuth 将带参数的路径转换为通配符格式
+// NormalizePathFor 将带参数的路径转换为通配符格式
 // 例如：/api/v1/user/123 -> /api/v1/user/*
-func NormalizePathForAuth(path string) string {
+func NormalizePathFor(path string) string {
 	// 处理空路径和根路径
 	if path == "" || path == "/" {
 		return path
