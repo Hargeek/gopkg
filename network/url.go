@@ -20,9 +20,9 @@ func GetBasePathFromURL(URL string) (string, error) {
 	return "", errors.New("invalid URL")
 }
 
-// NormalizePathFor 将带参数的路径转换为通配符格式
+// NormalizePath 将带参数的路径转换为通配符格式
 // 例如：/api/v1/user/123 -> /api/v1/user/*
-func NormalizePathFor(path string) string {
+func NormalizePath(path string) string {
 	// 处理空路径和根路径
 	if path == "" || path == "/" {
 		return path

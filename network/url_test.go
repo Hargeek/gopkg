@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-// TestNormalizePathForAuth 测试路径标准化功能
-func TestNormalizePathForAuth(t *testing.T) {
+// TestNormalizePath 测试路径标准化功能
+func TestNormalizePath(t *testing.T) {
 	tests := []struct {
 		name     string
 		input    string
@@ -90,16 +90,16 @@ func TestNormalizePathForAuth(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := NormalizePathForAuth(tt.input)
+			result := NormalizePath(tt.input)
 			if result != tt.expected {
-				t.Errorf("NormalizePathForAuth(%q) = %q, expected %q", tt.input, result, tt.expected)
+				t.Errorf("NormalizePath(%q) = %q, expected %q", tt.input, result, tt.expected)
 			}
 		})
 	}
 }
 
-// TestNormalizePathForAuthEdgeCases 测试边界情况
-func TestNormalizePathForAuthEdgeCases(t *testing.T) {
+// TestNormalizePathEdgeCases 测试边界情况
+func TestNormalizePathEdgeCases(t *testing.T) {
 	tests := []struct {
 		name     string
 		input    string
@@ -139,16 +139,16 @@ func TestNormalizePathForAuthEdgeCases(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := NormalizePathForAuth(tt.input)
+			result := NormalizePath(tt.input)
 			if result != tt.expected {
-				t.Errorf("NormalizePathForAuth(%q) = %q, expected %q", tt.input, result, tt.expected)
+				t.Errorf("NormalizePath(%q) = %q, expected %q", tt.input, result, tt.expected)
 			}
 		})
 	}
 }
 
-// TestNormalizePathForAuthRealWorld 测试真实世界场景
-func TestNormalizePathForAuthRealWorld(t *testing.T) {
+// TestNormalizePathRealWorld 测试真实世界场景
+func TestNormalizePathRealWorld(t *testing.T) {
 	tests := []struct {
 		name     string
 		input    string
@@ -193,16 +193,16 @@ func TestNormalizePathForAuthRealWorld(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := NormalizePathForAuth(tt.input)
+			result := NormalizePath(tt.input)
 			if result != tt.expected {
-				t.Errorf("NormalizePathForAuth(%q) = %q, expected %q", tt.input, result, tt.expected)
+				t.Errorf("NormalizePath(%q) = %q, expected %q", tt.input, result, tt.expected)
 			}
 		})
 	}
 }
 
-// BenchmarkNormalizePathForAuth 性能测试
-func BenchmarkNormalizePathForAuth(b *testing.B) {
+// BenchmarkNormalizePath 性能测试
+func BenchmarkNormalizePath(b *testing.B) {
 	testPaths := []string{
 		"/api/v1/user/123",
 		"/api/v1/user/admin",
@@ -213,19 +213,19 @@ func BenchmarkNormalizePathForAuth(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		for _, path := range testPaths {
-			NormalizePathForAuth(path)
+			NormalizePath(path)
 		}
 	}
 }
 
-// TestNormalizePathForAuthConsistency 测试一致性
-func TestNormalizePathForAuthConsistency(t *testing.T) {
+// TestNormalizePathConsistency 测试一致性
+func TestNormalizePathConsistency(t *testing.T) {
 	// 测试多次调用结果一致
 	path := "/api/v1/user/123"
 	expected := "/api/v1/user/*"
 
 	for i := 0; i < 100; i++ {
-		result := NormalizePathForAuth(path)
+		result := NormalizePath(path)
 		if result != expected {
 			t.Errorf("第 %d 次调用结果不一致: got %q, expected %q", i+1, result, expected)
 		}
